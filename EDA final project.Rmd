@@ -5,7 +5,7 @@ output: pdf
     fig_caption: yes
     number_sections: yes
 geometry: margin=2.54cm
-title: "River salt content, Colorado to Texas"
+title: "Seasonal Salt Content, in the Neuse and Eno Rivers"
 subtitle: "Web address for GitHub repository"
 author: "Atalie Fischer, Kathlyn MacDonald, Jack Carpenter"
 fontsize: 12pt
@@ -23,12 +23,21 @@ mainfont: Times New Roman
 
 ```{r setup, include=FALSE}
 # Set your working director
-setwd("../CarpenterFischerMacDonald_ENV872_EDA_FinalProject/")
+setwd("/Users/kmac9/OneDrive/Documents/Duke/Year 1/Spring 2022/ENV Data/CarpenterFischerMacDonald_ENV872_EDA_FinalProject/")
 
 # Load your packages
+library("tidyverse")
+library("lubridate")
+
 
 # Set your ggplot theme
+mytheme <- theme_classic(base_size = 14) +
+  theme(axis.text = element_text(color = "black"), 
+        legend.position = "top")
+
 # Load your datasets
+#Dataset <- read.csv()
+
 
 ```
 
