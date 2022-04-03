@@ -40,25 +40,18 @@ theme_set(theme_classic())
 1. Choose a dataset of interest. This can be one of the datasets we have analyzed in class this semester or a dataset of your choosing. If the latter, I recommend consulting with the course instructors to make sure the scope of the dataset is appropriate.
 
 ```{r}
-#import discharge data from Clear Creek, Colorado
-ClearCreek_flow <- readNWISdv(siteNumbers = "06719505",
+NeuseWQ <- readWQPqw(siteNumbers = "USGS-02089500", # Neuse River at Kinston, NC
+                     parameterCd = c("00915", # calcium, filtered mg/L
+                                     "00925", # magnesium, filtered mg/L
+                                     "00930", # sodium,filtered mg/L
+                                     "90095"),  # Specific conductance, uS/cm
+                     startDate = "1976-01-01",
+                     endDate = "")
+
+NeuseFlow <- readNWISdv(siteNumbers = "02089500",
                      parameterCd = "00060", # discharge (cfs)
                      startDate = "1976-01-01",
-                     endDate = "2021-12-31")
-names(ClearCreek_flow)[4:5] <- c("Discharge", "Approval.Code")
-
-#graph Clear Creek discharge over time
-ggplot(ClearCreek_flow, aes(x = Date, y = Discharge)) +
-  geom_line() +
-  labs(title = "Discharge of Clear Creek, Colorado")
-
-#import water quality data from South Platte River, Colorado
-SouthPlatteWQ_raw <- readWQPqw(siteNumbers = "USGS-06711565",
-                       parameterCd = c("00010", "00060", "00065", "00095", "00300", "00400"))
-
-NewHopeDO <- select(NewHopeDO_raw,
-                    Date = "ActivityStartDate",
-                    DO_mgL = "ResultMeasureValue")
+                     endDate = "")
 ```
 
 
