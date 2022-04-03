@@ -51,6 +51,14 @@ names(ClearCreek_flow)[4:5] <- c("Discharge", "Approval.Code")
 ggplot(ClearCreek_flow, aes(x = Date, y = Discharge)) +
   geom_line() +
   labs(title = "Discharge of Clear Creek, Colorado")
+
+#import water quality data from South Platte River, Colorado
+SouthPlatteWQ_raw <- readWQPqw(siteNumbers = "USGS-06711565",
+                       parameterCd = c("00010", "00060", "00065", "00095", "00300", "00400"))
+
+NewHopeDO <- select(NewHopeDO_raw,
+                    Date = "ActivityStartDate",
+                    DO_mgL = "ResultMeasureValue")
 ```
 
 
